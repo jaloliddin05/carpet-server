@@ -59,4 +59,5 @@ model Request {
   name String
   address String
   phoneNumber String
+  isViewed Boolean @default(false)
 }
