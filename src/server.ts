@@ -7,6 +7,7 @@ import {
   ContactRouter,
   OrderRouter,
   RequestRouter,
+  UserRouter,
 } from "./routes";
 
 const app: express.Application = express();
@@ -17,7 +18,8 @@ app.use(
   ProductRouter,
   ContactRouter,
   OrderRouter,
-  RequestRouter
+  RequestRouter,
+  UserRouter
 );
 
 app.listen(process.env.PORT, () => {
