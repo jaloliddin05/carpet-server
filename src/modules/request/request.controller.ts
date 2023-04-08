@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { OrderService } from "./order.service";
+import { RequestService } from "./request.service";
 import prisma from "../../db";
-import { CreateOrderDto, UpdateOrderDto } from "./dto";
+import { CreateRequestDto, UpdateRequestDto } from "./dto";
 
-const orderService = new OrderService(prisma);
+const requestService = new RequestService(prisma);
 
 export async function getAll(req: Request, res: Response) {
   try {
-    const data = await orderService.getAll();
+    const data = await requestService.getAll();
     res.send(data);
   } catch (err) {
     res.status(500).send(err.message);
@@ -17,7 +17,7 @@ export async function getAll(req: Request, res: Response) {
 export async function getById(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const data = await orderService.getById(id);
+    const data = await requestService.getById(id);
     res.send(data);
   } catch (err) {
     res.status(500).send(err.message);
@@ -26,8 +26,8 @@ export async function getById(req: Request, res: Response) {
 
 export async function create(req: Request, res: Response) {
   try {
-    const data: CreateOrderDto = req.body;
-    const response = await orderService.create(data);
+    const data: CreateRequestDto = req.body;
+    const response = await requestService.create(data);
     res.send(response);
   } catch (err) {
     res.status(500).send(err.message);
@@ -37,8 +37,8 @@ export async function create(req: Request, res: Response) {
 export async function update(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const data: UpdateOrderDto = req.body;
-    const response = await orderService.update(data, id);
+    const data: UpdateRequestDto = req.body;
+    const response = await requestService.update(data, id);
     res.send(response);
   } catch (err) {
     res.status(500).send(err.message);
@@ -48,7 +48,7 @@ export async function update(req: Request, res: Response) {
 export async function remove(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const response = await orderService.remove(id);
+    const response = await requestService.remove(id);
     res.send(response);
   } catch (err) {
     res.status(500).send(err.message);
