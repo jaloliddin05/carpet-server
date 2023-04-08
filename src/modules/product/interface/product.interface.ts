@@ -1,4 +1,5 @@
 import { ICategory } from "../../category/interface";
+import { IOrder } from "../../order/interface";
 
 interface IProduct {
   id: string;
@@ -9,7 +10,7 @@ interface IProduct {
   categoryId?: string;
   description: string;
   price: string;
-  // orders: Order[]
+  orders?: IOrder[];
 }
 
 export default IProduct;
