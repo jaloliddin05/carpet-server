@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import { CategoryService } from "./category.service";
+import { ProductService } from "./product.service";
 import prisma from "../../db";
-import { CreateCategoryDto, UpdateCategoryDto } from "./dto";
+import { CreateProductDto, UpdateProductDto } from "./dto";
 
-const categoryService = new CategoryService(prisma);
+const productService = new ProductService(prisma);
 
 export async function getAll(req: Request, res: Response) {
   try {
-    const categories = await categoryService.getAll();
-    res.send(categories);
+    const data = await productService.getAll();
+    res.send(data);
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -17,8 +17,8 @@ export async function getAll(req: Request, res: Response) {
 export async function getById(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const category = await categoryService.getById(id);
-    res.send(category);
+    const data = await productService.getById(id);
+    res.send(data);
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -26,9 +26,9 @@ export async function getById(req: Request, res: Response) {
 
 export async function create(req: Request, res: Response) {
   try {
-    const data: CreateCategoryDto = req.body;
-    const category = await categoryService.create(data);
-    res.send(category);
+    const data: CreateProductDto = req.body;
+    const response = await productService.create(data);
+    res.send(response);
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -37,9 +37,9 @@ export async function create(req: Request, res: Response) {
 export async function update(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const data: UpdateCategoryDto = req.body;
-    const category = await categoryService.update(data, id);
-    res.send(category);
+    const data: UpdateProductDto = req.body;
+    const response = await productService.update(data, id);
+    res.send(response);
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -48,8 +48,8 @@ export async function update(req: Request, res: Response) {
 export async function remove(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const category = await categoryService.remove(id);
-    res.send(category);
+    const response = await productService.remove(id);
+    res.send(response);
   } catch (err) {
     res.status(500).send(err.message);
   }
