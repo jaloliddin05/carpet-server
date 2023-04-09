@@ -5,17 +5,17 @@ import { IProduct } from "./interface";
 export class ProductService {
   constructor(private readonly prismaClient: PrismaClient) {}
 
-  async getAll(): Promise<IProduct[]> {
-    const data = await this.prismaClient.product.findMany();
+  async getAll(where): Promise<IProduct[]> {
+    const data = await this.prismaClient.product.findMany({ where });
     return data;
   }
 
   async getById(id: string): Promise<IProduct> {
     const data = await this.prismaClient.product.findFirst({
       where: { id },
-      include:{
-        category:true
-      }
+      include: {
+        category: true,
+      },
     });
     return data;
   }

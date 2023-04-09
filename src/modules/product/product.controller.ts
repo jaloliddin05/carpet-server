@@ -7,7 +7,7 @@ const productService = new ProductService(prisma);
 
 export async function getAll(req: Request, res: Response) {
   try {
-    const data = await productService.getAll();
+    const data = await productService.getAll(req["where"]);
     res.send(data);
   } catch (err) {
     res.status(500).send(err.message);

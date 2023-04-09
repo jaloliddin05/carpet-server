@@ -7,7 +7,7 @@ class CreateProductDto {
 
   @IsNotEmpty()
   @IsArray()
-  imgs: string[];
+  img: string[];
 
   @IsNotEmpty()
   @IsArray()
@@ -20,6 +20,10 @@ class CreateProductDto {
   @IsNotEmpty()
   @IsString()
   price: string;
+
+  @IsNotEmpty()
+  @IsString()
+  color: string;
 
   @IsNotEmpty()
   @IsString()

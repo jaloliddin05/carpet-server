@@ -23,6 +23,10 @@ class UpdateProductDto {
 
   @IsOptional()
   @IsString()
+  color: string;
+
+  @IsOptional()
+  @IsString()
   categoryId: string;
 }
 

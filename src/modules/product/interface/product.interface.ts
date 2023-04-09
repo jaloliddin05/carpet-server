@@ -10,6 +10,7 @@ interface IProduct {
   categoryId?: string;
   description: string;
   price: string;
+  color: string;
   orders?: IOrder[];
 }
 
