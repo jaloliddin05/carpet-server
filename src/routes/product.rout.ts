@@ -7,6 +7,7 @@ import {
 import { CreateProductDto, UpdateProductDto } from "../modules/product/dto";
 const router = Router();
 
+
 router
   .get("/product", ProductQueryParserMiddleware, productController.getAll)
   .get("/product/:id", productController.getById)

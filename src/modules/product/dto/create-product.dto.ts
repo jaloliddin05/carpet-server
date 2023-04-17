@@ -1,12 +1,11 @@
-import { IsArray, IsNotEmpty, IsString } from "class-validator";
+import { IsArray, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 class CreateProductDto {
   @IsNotEmpty()
   @IsString()
   title: string;
 
-  @IsNotEmpty()
-  @IsArray()
+  @IsOptional()
   img: string[];
 
   @IsNotEmpty()
