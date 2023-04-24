@@ -18,6 +18,13 @@ export class UserService {
     return data;
   }
 
+  async getByUsername(username: string): Promise<IUser> {
+    const data = await this.prismaClient.user.findFirst({
+      where: { username },
+    });
+    return data;
+  }
+
   async create(data: CreateUserDto) {
     data.password = await HashPassword(data.password);
     const response = await this.prismaClient.user.create({ data });

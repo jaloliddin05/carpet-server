@@ -3,7 +3,7 @@ import { UserService } from "./user.service";
 import prisma from "../../db";
 import { CreateUserDto, UpdateUserDto } from "./dto";
 
-const userService = new UserService(prisma);
+export const userService = new UserService(prisma);
 
 export async function getAll(req: Request, res: Response) {
   try {
