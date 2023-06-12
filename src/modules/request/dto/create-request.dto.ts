@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from "class-validator";
 
 class CreateRequestDto {
   @IsNotEmpty()
@@ -13,7 +19,7 @@ class CreateRequestDto {
   @IsString()
   address: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsBoolean()
   isViewed: boolean;
 }

@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+} from "class-validator";
 
 class CreateOrderDto {
   @IsNotEmpty()
@@ -17,7 +23,7 @@ class CreateOrderDto {
   @IsNumber()
   count: number;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsBoolean()
   isViewed: boolean;
 

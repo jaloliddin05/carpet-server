@@ -9,7 +9,15 @@ const AccessTokenMiddleware = async (
   next: NextFunction
 ) => {
   try {
-    if (req.method == "GET") {
+    if (
+      req.method == "GET" ||
+      req.url == "/auth/login" ||
+      req.url == "/auth/refresh" ||
+      (req.method == "POST" && req.url == "/order") ||
+      (req.method == "POST" && req.url == "/request") ||
+      (req.method == "POST" && req.url == "/user") ||
+      (req.method == "POST" && req.url == "/contact")
+    ) {
       next();
       return;
     }
